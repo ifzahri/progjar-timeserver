@@ -1,5 +1,4 @@
-// logger.go
-package main
+package server
 
 import (
 	"fmt"
