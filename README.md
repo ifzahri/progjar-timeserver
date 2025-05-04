@@ -62,7 +62,17 @@ Time Server mendukung protokol berbasis teks sederhana:
 ### Contoh Interaksi
 
 ```
+# nc (netcat)
 $ nc localhost 45000
+Welcome to Time Server. Send 'TIME' for current time, 'QUIT' to disconnect.
+TIME
+JAM 15:04:05
+QUIT
+```
+
+```
+# telnet
+$ telnet localhost 45000
 Welcome to Time Server. Send 'TIME' for current time, 'QUIT' to disconnect.
 TIME
 JAM 15:04:05
@@ -72,13 +82,14 @@ QUIT
 ## Struktur Project
 
 ```
-timeserver/
-├── main.go       # Entry point aplikasi
-├── config.go     # Konfigurasi server
-├── logger.go     # Sistem logging
-├── server.go     # Implementasi server
+timeserver
+├── server
+│   ├── config.go    # Konfigurasi server
+│   ├── logger.go    # Logging sistem
+│   └── server.go    # Implementasi server
 ├── go.mod
-└── README.md
+├── main.go          # Entrypoint aplikasi
+└── Makefile
 ```
 
 ## Arsitektur
