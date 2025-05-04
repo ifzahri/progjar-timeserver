@@ -1,17 +1,12 @@
 # Time Server
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/timeserver)](https://goreportcard.com/report/github.com/yourusername/timeserver)
-[![GoDoc](https://godoc.org/github.com/yourusername/timeserver?status.svg)](https://godoc.org/github.com/yourusername/timeserver)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ifzahri/progjar-timeserver)](https://goreportcard.com/report/github.com/ifzahri/progjar-timeserver)
+[![GoDoc](https://godoc.org/github.com/ifzahri/progjar-timeserver?status.svg)](https://godoc.org/github.com/ifzahri/progjar-timeserver)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Time Server adalah implementasi server TCP konkuren yang ditulis dalam Go (Golang). Server ini menyediakan layanan waktu sederhana yang dapat diakses melalui koneksi TCP.
-
-## Fitur Utama
-
-- 🚀 **Server TCP Konkuren** - Menangani banyak koneksi klien secara bersamaan menggunakan goroutines
-- 🕰️ **Layanan Waktu** - Menyediakan waktu server saat ini saat diminta
-- 📝 **Logging Komprehensif** - Mencatat semua aktivitas server dan koneksi klien
-- 🛑 **Graceful Shutdown** - Menangani penghentian dengan bersih saat menerima sinyal sistem
+| Nama | NRP |
+|----------|-----------|
+| Iftala Zahri Sukmana   | 5025221002 |
 
 ## Instalasi
 
@@ -23,7 +18,7 @@ Time Server adalah implementasi server TCP konkuren yang ditulis dalam Go (Golan
 
 1. Clone repository:
    ```bash
-   git clone https://github.com/yourusername/timeserver.git
+   git clone https://github.com/ifzahri/progjar-timeserver.git
    cd timeserver
    ```
 
@@ -123,56 +118,6 @@ Server mengimplementasikan strategi penanganan error yang komprehensif:
 - Sentinel errors untuk error yang umum
 - Timeout untuk operasi I/O
 - Graceful degradation saat terjadi error
-
-## Pengujian
-
-Untuk menjalankan test:
-
-```bash
-go test ./...
-```
-
-Project ini mencakup:
-- Unit tests untuk komponen individual
-- Integration tests untuk fungsionalitas end-to-end
-- Benchmarks untuk komponen kritis
-
-## Performa
-
-Time Server dirancang untuk performa tinggi dengan penggunaan resource yang efisien:
-
-- Konkurensi goroutine yang ringan
-- Penggunaan memory yang dioptimalkan dengan buffer tetap
-- Penggunaan RWMutex untuk pembacaan simultan
-
-## Kasus Penggunaan
-
-Time Server cocok untuk:
-
-- Demo/pembelajaran untuk pemrograman jaringan dengan Go
-- Basis untuk membangun server TCP yang lebih kompleks
-- Pengujian aplikasi klien sederhana
-- Tutorial untuk konkurensi dan pengelolaan resource dalam Go
-
-## Kontribusi
-
-Kontribusi selalu disambut! Jika Anda ingin berkontribusi:
-
-1. Fork repository
-2. Buat branch fitur (`git checkout -b feature/amazing-feature`)
-3. Commit perubahan Anda (`git commit -m 'Add some amazing feature'`)
-4. Push ke branch (`git push origin feature/amazing-feature`)
-5. Buka Pull Request
-
-## Lisensi
-
-Project ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detail.
-
-## Kontak
-
-Nama Anda - [@twitter_handle](https://twitter.com/twitter_handle) - email@example.com
-
-Project Link: [https://github.com/yourusername/timeserver](https://github.com/yourusername/timeserver)
 
 ## Acknowledgments
 
