@@ -20,11 +20,11 @@ func main() {
 	flag.Parse()
 
 	// config
-	cfg := config.NewConfig(*host, *port)
+	cfg := server.NewConfig(*host, *port)
 	cfg.SetLogLevel(*logLevel)
 
 	// server
-	timeServer := server.NewTimeServer(cfg)
+	timeServer := server.NewTimeServer(*cfg)
 	Banner(cfg)
 
 	// goroutine
@@ -40,7 +40,7 @@ func main() {
 }
 
 // Banner
-func Banner(cfg *config.Config) {
+func Banner(cfg *server.Config) {
 	fmt.Println("=================================================")
 	fmt.Println("       TIME SERVER - Concurrent TCP Server       ")
 	fmt.Println("=================================================")

@@ -9,9 +9,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-
-	"config"
-	"logger"
 )
 
 // sentinel errors
@@ -22,12 +19,12 @@ var (
 
 // TimeServer
 type TimeServer struct {
-	config      *config.Config
+	config      Config
 	status      bool
 	wg          sync.WaitGroup
 	mutex       sync.RWMutex
 	server      net.Listener
-	logger      *logger.Logger
+	logger      Logger
 	clientID    int
 	ctx         context.Context
 	cancelFunc  context.CancelFunc
@@ -35,11 +32,11 @@ type TimeServer struct {
 }
 
 // NewTimeServer
-func NewTimeServer(cfg *config.Config) *TimeServer {
+func NewTimeServer(cfg Config) *TimeServer {
 	ctx, cancel := context.WithCancel(context.Background())
 	return &TimeServer{
 		config:      cfg,
-		logger:      logger.NewLogger("SERVER"),
+		logger:      *NewLogger("SERVER"),
 		clientID:    0,
 		ctx:         ctx,
 		cancelFunc:  cancel,
@@ -156,7 +153,7 @@ func (ts *TimeServer) ClientHandler(conn net.Conn, clientID int) {
 	defer ts.wg.Done()
 	defer conn.Close()
 
-	clientLogger := logger.NewLogger(fmt.Sprintf("CLIENT-%d", clientID))
+	clientLogger := NewLogger(fmt.Sprintf("CLIENT-%d", clientID))
 	clientAddr := conn.RemoteAddr().String()
 	clientLogger.Info("New connection from %s", clientAddr)
 
@@ -202,7 +199,7 @@ func (ts *TimeServer) ClientHandler(conn net.Conn, clientID int) {
 			clientLogger.Debug("Received command: %s", command)
 
 			if strings.Contains(command, "TIME") {
-				ts.TimeHandler(conn, clientLogger)
+				ts.TimeHandler(conn, *clientLogger)
 			}
 			if strings.Contains(command, "QUIT") {
 				clientLogger.Info("Client requested disconnect")
@@ -213,7 +210,7 @@ func (ts *TimeServer) ClientHandler(conn net.Conn, clientID int) {
 }
 
 // TimeHandler
-func (ts *TimeServer) TimeHandler(conn net.Conn, logger *logger.Logger) {
+func (ts *TimeServer) TimeHandler(conn net.Conn, logger Logger) {
 	currentTime := time.Now().Format("15:04:05")
 	response := fmt.Sprintf("JAM %s\r\n", currentTime)
 
